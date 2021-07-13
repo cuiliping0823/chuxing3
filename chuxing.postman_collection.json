@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "53341fa0-716e-4261-a13a-89b540a08f10",
+		"name": "出行",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "登录",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//查看httpCode码\r",
+							"tests[\"接口状态码200\"] = responseCode.code === 200;\r",
+							"//判断请求时间\r",
+							"tests[\"返回时间小于1000毫秒\"] = responseTime < 1000;\r",
+							"//返回body转json\r",
+							"var data = JSON.parse(responseBody);\r",
+							"//检查json数据\r",
+							"tests[\"code码必须为0\"] = data.code == 0;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.travel.vcolco.com/v1/auth/login?username=13333333333&password=761baf6dc036732ad514660752b4ccab",
+					"protocol": "https",
+					"host": [
+						"api",
+						"travel",
+						"vcolco",
+						"com"
+					],
+					"path": [
+						"v1",
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "13333333333"
+						},
+						{
+							"key": "password",
+							"value": "761baf6dc036732ad514660752b4ccab"
+						},
+						{
+							"key": "sa",
+							"value": "1=1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
